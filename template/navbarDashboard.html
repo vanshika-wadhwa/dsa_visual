@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>navbar Dashboard</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: monospace;
+        }
+        ul {
+            list-style: none;
+            background: #22438c;
+        }
+        ul li {
+            display: inline-block;
+            position: relative;
+        }
+        ul li a {
+            display: block;
+            padding: 20px 25px;
+            color: #FFF;
+            text-decoration: none;
+            text-align: center;
+            font-size: 20px;
+        }
+        ul li ul.dropdown li {
+            display: block;
+        }
+        ul li ul.dropdown {
+            width: 100%;
+            background: #22438c;
+            position: absolute;
+            z-index: 999;
+            display: none;
+        }
+        ul li a:hover {
+            background: #112c66;
+        }
+        ul li:hover ul.dropdown {
+            display: block;
+        }
+        /* Add a pseudo-element for dropdown arrow */
+        ul li:has(ul.dropdown) > a::after {
+            content: " ▼"; /* Unicode for down arrow */
+            font-size: 12px;
+        }
+        .search-bar {
+            margin-left: auto;
+            padding: 10px 20px;
+        }
+        .search-bar input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Sorting</a>
+                <ul class="dropdown">
+                    <li><a href="#">Bubble Sort</a></li>
+                    <li><a href="#">Merge Sort</a></li>
+                    <li><a href="#">Quick Sort</a></li>
+                    <li><a href="#">Count Sort</a></li>
+                    <li><a href="#">Radix Sort</a></li>
+                    <li><a href="#">Selection Sort</a></li>
+                    <li><a href="#">Insertion Sort</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Shortest Path</a>
+                <ul class="dropdown">
+                    <li><a href="#">Prims</a></li>
+                    <li><a href="#">Dijkstra</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Linked list</a>
+                <ul class="dropdown">
+                    <li><a href="#">Singly linked list</a></li>
+                    <li><a href="#">Doubly linked list</a></li>
+                    <li><a href="#">Circular linked list</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Stack</a>
+                <ul class="dropdown">
+                    <li><a href="#">via Array</a></li>
+                    <li><a href="#">via linked list</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Queue</a>
+                <ul class="dropdown">
+                    <li><a href="#">via Array</a></li>
+                    <li><a href="#">via linked list</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Feedback</a></li>
+            <li><a href="#">Signout</a></li>
+            <li class="search-bar">
+                <input type="text" placeholder="Search...">
+            </li>
+        </ul>
+    </nav>
+</body>
+</html>

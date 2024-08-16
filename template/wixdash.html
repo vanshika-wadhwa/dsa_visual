@@ -1,0 +1,502 @@
+<!-- wixdash.html -->
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wix dashboard</title>
+    <!-- <link rel="stylesheet" href="./static/utility.css"> -->
+    <link rel="stylesheet" href="./static/wixdash.css">
+    <!-- <link rel="stylesheet" href="./static/PgNavbar.css"> -->
+    <!-- <link rel="stylesheet" href="./static/lefticon.css"> -->
+    <!-- <link rel="stylesheet" href="./static/chatbot.css"> -->
+    <!-- <link rel="stylesheet" href="./static/loginpg.css"> -->
+    <!-- <link rel="stylesheet" href="./static/sorting.css"> -->
+    <!-- <link rel="stylesheet" href="./static/carousel.css"> -->
+
+    <style>
+            /* utility.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* wixdash.css */
+.fixed_navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f4f4f4;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.fixed_navigation .left ul,
+.fixed_navigation .right ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.fixed_navigation .left li,
+.fixed_navigation .right li {
+    margin: 0 10px;
+    font-size: 14px;
+}
+
+.fixed_navigation .left li {
+    color: #555;
+}
+
+.fixed_navigation .right li {
+    display: flex;
+    align-items: center;
+}
+
+.fixed_navigation .right input {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    margin-right: 5px;
+}
+
+.fixed_navigation .right .srchbtn {
+    background-color: #007BFF;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    padding: 5px 10px;
+}
+
+.fixed_navigation .right .mode {
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.pgnavigation {
+    display: flex;
+    justify-content: center;
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 0;
+    position: fixed;
+    top: 60px;
+    width: 100%;
+    z-index: 1000;
+}
+
+.pgnavigation ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.pgnavigation li {
+    position: relative;
+    margin: 0 15px;
+    font-size: 16px;
+}
+
+.pgnavigation a {
+    color: #fff;
+    padding: 10px;
+    display: block;
+}
+
+.pgnavigation .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    color: #333;
+    list-style: none;
+    padding: 0;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pgnavigation .dropdown a {
+    padding: 10px;
+    color: #333;
+}
+
+.pgnavigation li:hover .dropdown {
+    display: block;
+}
+
+.leftfixedicon {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.leftfixedicon ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.leftfixedicon li {
+    margin: 0 5px;
+}
+
+.chatbot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007BFF;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chatbot img {
+    width: 40px;
+}
+
+.carousel {
+    margin-top: 100px; /* Adjust this value to ensure carousel is visible below the fixed navigation */
+}
+
+.carousel .slider-wrapper {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.carousel .slider {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel img {
+    width: 100%;
+    height: auto;
+}
+
+.carousel .slider-nav {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.carousel .slider-nav a {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #007BFF;
+    border-radius: 50%;
+    margin: 0 5px;
+    transition: background-color 0.3s;
+}
+
+.carousel .slider-nav a:hover,
+.carousel .slider-nav a.active {
+    background-color: #0056b3;
+}
+
+.carousel .righticon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.content {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.content .sorting {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.content h1 {
+    color: #007BFF;
+}
+
+.content dl {
+    margin: 0;
+    padding: 0;
+}
+
+.content dt {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.content dd {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+/* loginpg.css */
+.card {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card h1 {
+    text-align: center;
+    color: #007BFF;
+}
+
+.card .email,
+.card .password {
+    margin-bottom: 15px;
+}
+
+.card label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.card input[type="email"],
+.card input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.card button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.card .signUpOption {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.card .capsules {
+    display: flex;
+    justify-content: center;
+}
+
+.card .capsules button {
+    border: none;
+    background: none;
+    margin: 0 5px;
+}
+
+.card .footer {
+    text-align: center;
+    margin-top: 10px;
+}
+
+ </style>
+</head>
+
+<body>
+    <div class="fixed_navigation">
+        <div class="left">
+            <ul>
+                <li>About</li>
+                <li>vanshika</li>
+                <li>online courses</li>
+                <li>contact</li>
+            </ul>
+        </div>
+        <div class="center">
+            logo
+        </div>
+        <div class="right">
+            <ul>
+                <li><img class="userIcon" src="./images/userIcon.svg" alt="user">Log In</li>
+
+                <li><input type="text" placeholder="search now">
+                    <button class="srchbtn" type="button">search</button>
+                </li>
+                <li><img class="menuIcon" src="./images/menuIcon.svg" alt="menuIcon"></li>
+                <li><img class="mode" src="sun.svg" alt="mode"></li>
+                <li><img class="mode" src="moon.svg" alt="mode"></li>
+            </ul>
+        </div>
+    </div>
+    <div class="pgnavigation">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Sorting</a>
+                
+                <ul class="dropdown">
+                    <li><a href="bubble.html">Bubble Sort</a></li>
+                    <li><a href="merge.html">Merge Sort</a></li>
+                    <li><a href="quick.html">Quick Sort</a></li>
+                    <li><a href="count.html">Count Sort</a></li>
+                    <li><a href="radix.html">Radix Sort</a></li>
+                    <li><a href="selection.html">Selection Sort</a></li>
+                    <li><a href="bubble.html">Insertion Sort</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Shortest Path</a>
+                
+                <ul class="dropdown">
+                    <li><a href="prims.html">Prims</a></li>
+                    <li><a href="dijakstar.html">Dijkstra</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Linked list</a>
+                
+                <ul class="dropdown">
+                    <li><a href="Singly.html">Singly linked list</a></li>
+                    <li><a href="doubly.html">Doubly linked list</a></li>
+                    <li><a href="circular.html">Circular linked list</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Stack</a>
+                
+                <ul class="dropdown">
+                    <li><a href="stack_array.html">via Array</a></li>
+                    <li><a href="stack_linked_list.html">via linked list</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Queue</a>
+                
+                <ul class="dropdown">
+                    <li><a href="queue_array.html">via Array</a></li>
+                    <li><a href="queue_linked_list.html">via linked list</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Feedback</a></li>
+            <li><a href="#">Signout</a></li>
+
+        </ul>
+    </div>
+    <!-- ---------------------------------------fixed position icons----------------------------------------------- -->
+    <div class="leftfixedicon">
+        <img class="lefticon" src="lefticon.svg" alt="lefticon">
+        <ul>
+            <li><a class="whtsp" href="https://www.whatsapp.com/" target="_blank"><img src="whtsp.png" width="50px"
+                        alt="whtsp"></a></li>
+            <li><a class="insta" href="https://www.instagram.com/"></a><img src="insta.png" width="50px" alt="insta">
+            </li>
+        </ul>
+    </div>
+    <div class="chatbot">
+        <img src="chatbotimage.png" width="50px" alt="chatbot">
+    </div>
+
+    <!-- ----------------------------------------login card------------------------------------------------------------ -->
+    <!-- 
+    <div class="card">
+        <h1>login to DSA</h1>
+        <div class="email">
+            <label for="email">Email</label>
+            <input type="email" placeholder="example@gmail.com">
+        </div>
+        <div class="password">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password">
+        </div>
+        <div class="signup">
+            <button type="submit">sign up</button>
+        </div>
+
+        <div class="signUpOption">
+            or sign up with
+        </div>
+        <div class="capsules">
+            <button type="button"><a href="https://www.google.com/"></a><img src="google.png" alt="google"
+                    width="30px"></button>
+            <button type="button"><a href="https://www.facebook.com/"></a><img src="facebook.png" alt="facebook"
+                    width="60px"></button>
+            <button type="button"><a href="https://www.apple.com/"></a><img src="apple.png" alt="apple"
+                    width="30px"></button>
+        </div> 
+        <div class="footer">
+            <p>Have an account? <a href="register.html">Sign In</a></p>
+        </div> -->
+
+    <!-- -------------------------------------- content -------------------------------------------------- -->
+    <div class="carousel">
+        <div class="slider-wrapper"> <!-- all images r navgigate -->
+            <div class="slider">
+
+                <img id="slider-1" src="dl1.jfif" alt="dl1" width="400" height="350">
+
+
+                <img id="slider-2" src="dl2.jfif" alt="dl2" "width=" 400" height="350">
+
+
+                <img id="slider-3" src="dl3.png" alt="dl3" "width=" 400" height="350">
+
+
+                <img id="slider-4" src="ll.jfif" alt="ll" "width=" 400" height="350">
+
+
+                <img id="slider-5" src="cl.jfif" alt="cl" "width=" 400" height="350">
+
+            </div>
+            <div class="slider-nav">
+                <a href="#slider-1"></a>
+                <a href="#slider-2"></a>
+                <a href="#slider-3"></a>
+                <a href="#slider-4"></a>
+                <a href="#slider-5"></a>
+            </div>
+            <div class="righticon">
+                <img src="righticon.svg" alt="right icon">
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="sorting">
+            <h1>Sorting</h1>
+            <dl>
+                <dt>Definition</dt>
+                <dd>Sorting is a technique which sorts the data. There are many techniques which sort data with
+                    different time
+                    complexity and with different space complexity. Some techniques are written below:</dd>
+
+                <dt>Types of Sorting</dt>
+                <dd>Insertion Sort</dd>
+                <dd>Bubble Sort</dd>
+                <dd>Selection Sort</dd>
+                <dd>Merge Sort</dd>
+                <dd>Quick Sort</dd>
+                <dd>Count Sort</dd>
+                <dd>Radix Sort</dd>
+            </dl>
+        </div>
+    </div>
+    </div>
+
+    </div>
+</body>
+
+</html>
